@@ -6,7 +6,7 @@
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
-                <v-toolbar-title>Register form</v-toolbar-title>
+                <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-tooltip bottom>
                   <v-btn
@@ -31,7 +31,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="register" color="primary">Register</v-btn>
+                <v-btn @click="login" color="primary">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -53,14 +53,14 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        await AuthenticationService.register({
+        await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
         this.error = null
-        this.success = 'User created!'
+        this.success = 'Logged in'
       } catch (error) {
         this.success = null
         this.error = error.response.data.error
